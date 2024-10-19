@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 const servicesData = [
   {
     title: 'Janitorial Services',
-    image: 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_2800/https://progressiveclean.com/wp-content/uploads/2019/10/5-reasons-to-hire-a-janitorial-service-for-your-office-e1572117040413.jpg', // Free image link from Unsplash
+    image: 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_2800/https://progressiveclean.com/wp-content/uploads/2019/10/5-reasons-to-hire-a-janitorial-service-for-your-office-e1572117040413.jpg',
     description: 'Comprehensive janitorial services for commercial buildings. Our team ensures cleanliness with customized schedules to meet your needs.',
     price: '$250/month',
     details: 'Includes daily cleaning, floor maintenance, restroom sanitization, and waste disposal. Our flexible cleaning plans are designed to fit your operational hours, providing a safe, healthy, and clean environment for employees and customers alike.'
@@ -73,10 +73,9 @@ const servicesData = [
   },
 ];
 
-
 const Services = () => {
-  const [selectedService, setSelectedService] = useState(null); // Track selected service for modal
-  const modalRef = useRef(null); // Ref for the modal
+  const [selectedService, setSelectedService] = useState(null);
+  const modalRef = useRef(null);
 
   const openModal = (service) => {
     setSelectedService(service);
@@ -112,11 +111,11 @@ const Services = () => {
         </p>
       </div>
       <div className="mt-10">
-        <ul className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
+        <ul className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
           {servicesData.map((service, index) => (
             <li
               key={index}
-              className="bg-blue-100 p-3 rounded-lg shadow-md cursor-pointer transform transition-transform hover:scale-105 text-white"
+              className={`bg-blue-100 p-3 rounded-lg shadow-md cursor-pointer transform transition-transform hover:scale-105 ${servicesData.length % 3 !== 0 && index === servicesData.length - 1 ? 'lg:col-span-3' : ''}`}
               onClick={() => openModal(service)}
             >
               <img
@@ -132,39 +131,35 @@ const Services = () => {
 
       {/* Modal */}
       {selectedService && (
-  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 h-screen">
-    <div 
-      ref={modalRef} 
-      className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-2/3 lg:w-2/3 h-fit flex flex-col lg:flex-row items-center lg:items-start overflow-auto scrollbar-hide"
-    >
-      {/* Image Section (comes first in mobile view) */}
-      <div className="lg:w-1/2 md:h-96 mt-6 lg:mt-0 flex items-center justify-center order-1 lg:order-2">
-        <img
-          src={selectedService.image}
-          alt={selectedService.title}
-          className="w-full h-full object-cover rounded-md"
-        />
-      </div>
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 h-screen">
+          <div
+            ref={modalRef}
+            className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-2/3 lg:w-2/3 h-fit flex flex-col lg:flex-row items-center lg:items-start overflow-auto scrollbar-hide"
+          >
+            {/* Image Section */}
+            <div className="lg:w-1/2 md:h-96 mt-6 lg:mt-0 flex items-center justify-center order-1 lg:order-2">
+              <img
+                src={selectedService.image}
+                alt={selectedService.title}
+                className="w-full h-full object-cover rounded-md"
+              />
+            </div>
 
-      {/* Content Section */}
-      <div className="lg:w-1/2 lg:pr-6 flex flex-col justify-between md:h-96 order-2 lg:order-1">
-        <h3 className="text-base md:text-2xl font-bold text-gray-900">{selectedService.title}</h3>
-        <p className="text-xs md:text-sm mt-4 text-gray-600">{selectedService.description}</p>
-        <p className="text-xs md:text-sm mt-2 text-gray-500">{selectedService.details}</p>
-        <p className="mt-2 text-sm md:text-lg font-semibold text-cyan-600">Price: {selectedService.price}</p>
-        <a
-          href="#contact"  // Placeholder for actual contact link or functionality
-          className="mt-6 px-4 py-2 text-xs md:text-sm bg-cyan-600 text-white font-semibold rounded hover:bg-cyan-800 block text-center"
-        >
-          Contact Us
-        </a>
-      </div>
-    </div>
-  </div>
-)}
-
-
-
+            {/* Content Section */}
+            <div className="lg:w-1/2 lg:pr-6 flex flex-col justify-between md:h-96 order-2 lg:order-1">
+              <h3 className="text-base md:text-2xl font-bold text-gray-900">{selectedService.title}</h3>
+              <p className="text-xs md:text-sm mt-4 text-gray-600">{selectedService.description}</p>
+              <p className="text-xs md:text-sm mt-2 text-gray-500">{selectedService.details}</p>
+              <a
+                href="#contact"
+                className="mt-6 px-4 py-2 text-xs md:text-sm bg-cyan-600 text-white font-semibold rounded hover:bg-cyan-800 block text-center"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

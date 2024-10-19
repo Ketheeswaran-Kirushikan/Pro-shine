@@ -2,7 +2,8 @@ import React from 'react';
 import about1 from '../assets/about1.jpg';
 import about2 from '../assets/about2.jpg';
 import about3 from '../assets/about3.jpg';
-import Faq from './Faq'
+// import Faq from './Faq'
+import CompanyLogos from './CompanyLogos';
 
 const AboutUs = () => {
   return (
@@ -74,7 +75,8 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <Faq/>
+      {/* <Faq/> */}
+      <CompanyLogos/>
     </div>
   );
 };
