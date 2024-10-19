@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-cyan-600 text-xs dark:bg-neutral-800 md:py-0 lg:py-0 xl:py-0 py-3">
+    <header className="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-cyan-600 text-xs md:py-0 lg:py-0 xl:py-0 py-3">
       <nav className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
         <div className="flex items-center justify-between">
           <a className="flex-none text-xs font-semibold text-white focus:outline-none focus:opacity-80" href="#hero" aria-label="Brand">

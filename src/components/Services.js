@@ -111,11 +111,11 @@ const Services = () => {
         </p>
       </div>
       <div className="mt-10">
-        <ul className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+        <div className="flex flex-wrap justify-center gap-6">
           {servicesData.map((service, index) => (
-            <li
+            <div
               key={index}
-              className={`bg-blue-100 p-3 rounded-lg shadow-md cursor-pointer transform transition-transform hover:scale-105 ${servicesData.length % 3 !== 0 && index === servicesData.length - 1 ? 'lg:col-span-3' : ''}`}
+              className="bg-blue-100 p-3 rounded-lg shadow-md cursor-pointer transform transition-transform hover:scale-105 w-full sm:w-1/2 lg:w-2/3 max-w-sm"
               onClick={() => openModal(service)}
             >
               <img
@@ -124,9 +124,9 @@ const Services = () => {
                 className="w-full h-40 object-cover rounded-t-lg mb-4"
               />
               <h3 className="text-sm font-semibold text-orange-600">{service.title}</h3>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
       {/* Modal */}
